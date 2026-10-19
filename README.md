@@ -2,6 +2,8 @@
 
 A simple Todo List app built with React, TypeScript, and Tailwind CSS.
 
+**[Live Demo](https://simple-todo-list-gray.vercel.app/)**
+
 ### Features
 - Add tasks with titles and descriptions.
 - Mark tasks as completed.
