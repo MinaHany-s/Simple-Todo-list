@@ -6,6 +6,7 @@ type Props = {
 };
 
 export default function AppContextProvider({ children }: Props) {
+  
   const [tasks, setTasks] = useState<Task[]>(() => {
     const savedTasks = localStorage.getItem("tasks");
     return savedTasks ? JSON.parse(savedTasks) : [];
@@ -24,12 +25,12 @@ export default function AppContextProvider({ children }: Props) {
   }
   function deleteTask(idx: number) {
     setTasks((prevTasks) => prevTasks.filter((_,id)=>id!==idx));
-    console.log(tasks)
   }
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
+  
   return (
     <AppContext.Provider
       value={{ tasks, addTask, toggleCompleteTask, deleteTask }}

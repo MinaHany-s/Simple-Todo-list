@@ -4,9 +4,6 @@ import YourTasks from "./components/YourTasks";
 
 function App() {
 
-
-
-
   return (
     <div className="min-h-screen bg-[#0F172A] text-white">
       <Header />

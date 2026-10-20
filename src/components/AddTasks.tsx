@@ -1,4 +1,4 @@
-import { useContext, useState, type FormEvent } from "react";
+import React, { useContext, useState } from "react";
 import { AppContext } from "../contexts/AppContext";
 
 export default function AddTasks() {
@@ -11,10 +11,10 @@ export default function AddTasks() {
 
   const { addTask } = context;
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.SubmitEvent) {
     e.preventDefault();
 
-    addTask({ task, description,completed:false });
+    addTask({ task, description, completed: false });
 
     setTask("");
     setDescription("");
@@ -22,9 +22,7 @@ export default function AddTasks() {
 
   return (
     <div className="p-6 ">
-      <form
-      onSubmit={handleSubmit}
-       className="flex flex-col gap-4 ">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 ">
         <label htmlFor="text" className="text-3xl">
           Add a new task
         </label>
@@ -35,7 +33,9 @@ export default function AddTasks() {
           placeholder="What do you need to do ?"
           required
           value={task}
-          onChange={(e) => setTask(e.target.value)}
+          onChange={(e) => {
+            setTask(e.target.value);
+          }}
         />
         <textarea
           className="p-4 border border-neutral-300 rounded h-40"
